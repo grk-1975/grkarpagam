@@ -1221,8 +1221,8 @@ document.addEventListener('keydown', e => {
       <div style="display:flex;gap:.8rem;align-items:flex-start;">
         <span style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#868e96;min-width:58px;padding-top:.15rem;">Email</span>
         <div style="display:flex;flex-direction:column;gap:.2rem;">
-          <a href="mailto:grk.cse@psgtech.ac.in" style="font-size:.88rem;color:#005a9e;">grk.cse@psgtech.ac.in</a>
-          <a href="mailto:director.aic@psgtech.ac.in" style="font-size:.88rem;color:#005a9e;">director.aic@psgtech.ac.in</a>
+          <a href="/cdn-cgi/l/email-protection#4522372e6b263620053536223120262d6b24266b2c2b" style="font-size:.88rem;color:#005a9e;"><span class="__cf_email__" data-cfemail="bfd8cdd491dcccdaffcfccd8cbdadcd791dedc91d6d1">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#0d69647f686e79627f236c646e4d7d7e6a79686e65236c6e236463" style="font-size:.88rem;color:#005a9e;"><span class="__cf_email__" data-cfemail="e5818c978086918a97cb848c86a59596829180868dcb8486cb8c8b">[email&#160;protected]</span></a>
         </div>
       </div>
       <div style="display:flex;gap:.8rem;align-items:flex-start;">
@@ -1249,20 +1249,21 @@ document.addEventListener('keydown', e => {
   <p style="margin-top:.3rem;">Last updated: February 2026</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── LINKEDIN TICKER MANAGER (link-only) ──
 const LI_KEY = 'li-posts-v2';
 let liSelectedEmoji = '💼';
 
-async function liGetPosts() {
+function liGetPosts() {
   try {
-    const r = await window.storage.get(LI_KEY);
-    return r ? JSON.parse(r.value) : [];
-  } catch(e) { return []; }
+    const r = localStorage.getItem(LI_KEY);
+    return Promise.resolve(r ? JSON.parse(r) : []);
+  } catch(e) { return Promise.resolve([]); }
 }
 
-async function liSavePosts(posts) {
-  try { await window.storage.set(LI_KEY, JSON.stringify(posts)); } catch(e) {}
+function liSavePosts(posts) {
+  try { localStorage.setItem(LI_KEY, JSON.stringify(posts)); } catch(e) {}
+  return Promise.resolve();
 }
 
 function rebuildTicker(posts) {
@@ -1422,13 +1423,4 @@ const scholarMap = {
   federated:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate',
   blockchain:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate',
   soa:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate',
-  cloud:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate',
-  security:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate',
-  semantic:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate',
-  mda:'https://scholar.google.co.in/citations?user=8x3AVVwAAAAJ&sortby=pubdate'
-};
-
-// Research interest tags — display only, no filter
-</script>
-</body>
-</html>
+  cloud:'https://schol
