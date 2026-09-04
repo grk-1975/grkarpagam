@@ -96,8 +96,8 @@ a:hover{color:#c7500a;text-decoration:underline;}
 }
 .pro-ticker-track:hover{animation-play-state:paused;}
 @keyframes proScroll{
-  0%{transform:translateX(0);}
-  100%{transform:translateX(-50%);}
+  0%{transform:translateX(0);} 
+  100%{transform:translateX(-50%);} 
 }
 .pro-ticker-item{
   display:inline-flex;
@@ -130,9 +130,12 @@ a:hover{color:#c7500a;text-decoration:underline;}
   .li-panel { transform: translateX(100%); right: 0; left: auto; }
   .li-panel.open { transform: translateX(0); }
 
-  /* Show the manage button on mobile so admin can open the panel */
-  .li-manage-btn { opacity: 1 !important; pointer-events: auto !important; width: auto !important; }
+  /* Show the manage button on mobile only for admins (body.owner-mode) */
+  body.owner-mode .li-manage-btn { opacity: 1 !important; pointer-events: auto !important; width: auto !important; }
 }
+
+/* Desktop: show manage button only when body.owner-mode present */
+body.owner-mode .li-manage-btn { opacity: 1 !important; pointer-events: auto !important; }
 
 </style>
 </head>
@@ -189,6 +192,38 @@ a:hover{color:#c7500a;text-decoration:underline;}
     };
     // Append items twice so the CSS animation can loop smoothly
     posts.concat(posts).forEach(p => track.appendChild(createItem(p)));
+
+    // Populate the manager "Current Posts" gallery so visitors see the same list
+    function renderGallery(items){
+      const grid = document.getElementById('liGalleryGrid');
+      const count = document.getElementById('liImgCount');
+      const empty = document.getElementById('liEmptyMsg');
+      if(!grid || !count || !empty) return;
+      grid.innerHTML = '';
+      items.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'li-post-card';
+        card.innerHTML = `
+          <div class="li-post-icon">${p.icon}</div>
+          <div class="li-post-body">
+            <div class="li-post-text">${p.caption}</div>
+            <a class="li-post-url" href="${p.url}" target="_blank" rel="noopener noreferrer">Open post</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      if(items.length){
+        count.textContent = items.length + ' posts';
+        empty.style.display = 'none';
+      } else {
+        count.textContent = '';
+        empty.style.display = 'block';
+      }
+    }
+
+    // Render the gallery using the unique posts (no duplicates)
+    renderGallery(posts);
+
   })();
   </script>
   <button class="li-manage-btn" id="liManageBtn" style="opacity:0;pointer-events:none;width:1px;overflow:hidden;padding:0;border:none;" onclick="liPanelOpen()">✎ Manage</button>
