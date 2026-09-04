@@ -49,7 +49,157 @@ a:hover{color:#c7500a;text-decoration:underline;}
 .chip.c-green{background:#f2fbf4;border-color:#cce8d4;border-top-color:#2e7d32;color:#2e7d32;}
 .chip.c-green .chip-val{color:#2e7d32;}
 @media(max-width:768px){.stat-chips{grid-template-columns:repeat(2,1fr);}}
-/* ... rest of existing CSS preserved ... */
+.sidebar-profiles{margin-top:1rem;width:180px;}
+.sp-row{white-space:normal;word-break:break-word;}
+.sp-heading{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#868e96;padding:.4rem 0;border-bottom:2px solid #dee2e6;margin-bottom:.3rem;}
+.sp-row{display:flex;align-items:center;gap:.55rem;padding:.38rem .3rem;font-size:.82rem;color:#343a40;text-decoration:none;border-bottom:1px solid #f1f3f5;transition:color .15s;}
+.sp-row:last-child{border-bottom:none;}
+.sp-row:hover{color:#005a9e;text-decoration:none;}
+.sp-icon{font-size:.9rem;width:18px;text-align:center;flex-shrink:0;}
+.interests{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.6rem;}
+.itag{
+  font-size:.76rem;font-weight:500;
+  padding:.32rem .85rem;
+  background:#f1f3f5;
+  border:1px solid #dee2e6;
+  border-radius:20px;
+  color:#495057;
+  cursor:default;
+  transition:all .18s;
+  user-select:none;
+  white-space:nowrap;
+  letter-spacing:.01em;
+}
+
+
+
+.pub-item{transition:opacity .25s,background .25s;}
+.pub-item.dimmed{opacity:.15;}
+.pub-item.highlighted{background:#fffbe6;}
+.pub-filter-bar{display:none;align-items:center;gap:.8rem;padding:.5rem .9rem;background:#e7f1fb;border:1px solid #b6d4f5;margin-bottom:1rem;font-size:.83rem;color:#0d5fa0;}
+.pub-filter-bar.visible{display:flex;}
+.pub-filter-bar strong{font-weight:600;}
+.pfb-clear{font-size:.75rem;padding:.18rem .55rem;background:#fff;border:1px solid #b6d4f5;color:#0d5fa0;cursor:pointer;margin-left:auto;}
+.pfb-clear:hover{background:#005a9e;color:#fff;border-color:#005a9e;}
+.sec{margin-bottom:3rem;}
+h2.sec-title{font-family:'Source Serif 4',serif;font-size:1.4rem;font-weight:600;color:#212529;margin-bottom:1.2rem;padding-bottom:.5rem;border-bottom:1px solid #dee2e6;}
+h2.sec-title span.badge-blue{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:500;background:#e7f1fb;color:#0d5fa0;border:1px solid #b6d4f5;padding:.15rem .55rem;margin-left:.6rem;}
+h2.sec-title span.badge-orange{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:500;background:#fff3e0;color:#b84a00;border:1px solid #ffe0b2;padding:.15rem .55rem;margin-left:.6rem;}
+
+/* ── NEWS / TIMELINE ── */
+.news-table{width:100%;border-collapse:collapse;}
+.news-table td{padding:.5rem .5rem;font-size:.88rem;vertical-align:top;border-bottom:1px solid #f1f3f5;}
+.news-table td:first-child{white-space:nowrap;color:#868e96;font-family:'JetBrains Mono',monospace;font-size:.78rem;padding-right:1.4rem;width:110px;}
+.news-table tr:last-child td{border-bottom:none;}
+/* year group header row */
+.news-table tr.yr-head td{font-family:'Source Serif 4',serif;font-size:.85rem;font-weight:600;color:#868e96;background:#f8f9fa;border-top:2px solid #dee2e6;border-bottom:1px solid #dee2e6;padding:.32rem .6rem;}
+/* milestone rows get a subtle blue tint */
+.news-table tr.milestone td{background:#f8fbff;border-bottom:1px solid #e7f1fb;}
+.news-table tr.milestone td:first-child{color:#005a9e;font-weight:600;}
+.ms-badge{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.1rem .42rem;background:#e7f1fb;color:#0d5fa0;border:1px solid #b6d4f5;border-radius:3px;margin-left:.4rem;}
+
+.qstats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.qs{text-align:center;padding:.8rem 1.2rem;background:#f8f9fa;border:1px solid #e9ecef;min-width:100px;}
+.qs-n{font-family:'Source Serif 4',serif;font-size:1.7rem;font-weight:600;color:#212529;display:block;}
+.qs-l{font-size:.72rem;color:#868e96;letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem;}
+.pub-list{list-style:none;counter-reset:pubs;}
+.pub-item{display:flex;gap:1rem;padding:.9rem 0;border-bottom:1px solid #f1f3f5;counter-increment:pubs;}
+.pub-item:last-child{border-bottom:none;}
+.pub-num{color:#adb5bd;font-size:.82rem;font-family:'JetBrains Mono',monospace;min-width:24px;padding-top:.15rem;flex-shrink:0;}
+.pub-title{font-weight:600;font-size:.93rem;color:#212529;line-height:1.5;margin-bottom:.25rem;}
+.pub-authors{font-size:.85rem;color:#495057;margin-bottom:.2rem;}
+.pub-authors em{font-style:normal;color:#c7500a;font-weight:600;}
+.pub-venue{font-size:.83rem;color:#868e96;font-style:italic;margin-bottom:.3rem;}
+.pub-links{display:flex;gap:.5rem;flex-wrap:wrap;}
+.pub-tag{font-size:.72rem;padding:.15rem .5rem;background:#f1f3f5;border:1px solid #dee2e6;color:#495057;}
+.pub-tag.t-venue{background:#e7f1fb;border-color:#b6d4f5;color:#0d5fa0;}
+.pub-tag.t-if{background:#e8f5e9;border-color:#c8e6c9;color:#2e7d32;}
+.pub-year-header{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;color:#868e96;margin:1.4rem 0 .4rem;padding-bottom:.3rem;}
+h3.ssec{font-size:.8rem;font-weight:600;color:#495057;margin:1.4rem 0 .7rem;letter-spacing:.03em;text-transform:uppercase;}
+.consortium-banner{background:linear-gradient(135deg,#f8f9fa 0%,#e7f1fb 100%);border:1px solid #b6d4f5;border-left:4px solid #005a9e;padding:1.4rem 1.6rem;margin-bottom:1.5rem;}
+.consortium-banner h3{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;color:#212529;margin-bottom:.4rem;}
+.consortium-banner p{font-size:.9rem;color:#495057;line-height:1.75;}
+.consortium-banner .cb-meta{font-size:.78rem;color:#868e96;margin-top:.5rem;font-family:'JetBrains Mono',monospace;}
+.spectrum-banner{background:linear-gradient(135deg,#fff8f0 0%,#fff3e0 100%);border:1px solid #ffe0b2;border-left:4px solid #c7500a;padding:1.4rem 1.6rem;margin-bottom:1.5rem;}
+.spectrum-banner h3{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;color:#212529;margin-bottom:.4rem;}
+.spectrum-banner p{font-size:.9rem;color:#495057;line-height:1.75;}
+.spectrum-banner .sb-meta{font-size:.78rem;color:#868e96;margin-top:.5rem;font-family:'JetBrains Mono',monospace;}
+.wing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:.8rem;}
+.wing-card{background:#f8f9fa;border:1px solid #dee2e6;padding:1rem 1.2rem;}
+.wing-abbr{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:500;color:#005a9e;margin-bottom:.2rem;}
+.wing-name{font-size:.88rem;font-weight:600;color:#212529;margin-bottom:.4rem;}
+.wing-floor{font-size:.75rem;color:#868e96;margin-bottom:.4rem;}
+.wing-corners{display:flex;flex-wrap:wrap;gap:.3rem;}
+.corner-tag{font-size:.72rem;background:#e7f1fb;border:1px solid #b6d4f5;color:#0d5fa0;padding:.15rem .5rem;}
+.tracks{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:.8rem 0 1.2rem;}
+.track{background:#f8f9fa;border:1px solid #dee2e6;padding:.8rem 1rem;text-align:center;}
+.track-n{font-family:'Source Serif 4',serif;font-size:1.2rem;font-weight:600;color:#c7500a;}
+.track-t{font-size:.82rem;font-weight:600;color:#212529;margin:.2rem 0 .1rem;}
+.track-s{font-size:.74rem;color:#868e96;}
+.agenda-day{background:#f8f9fa;border:1px solid #dee2e6;margin-bottom:.8rem;}
+.agenda-head{display:flex;gap:1rem;align-items:center;padding:.75rem 1.1rem;background:#fff;border-bottom:1px solid #dee2e6;}
+.ad-day{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;color:#005a9e;min-width:50px;}
+.ad-info{font-size:.85rem;}
+.ad-date{color:#868e96;font-family:'JetBrains Mono',monospace;font-size:.75rem;}
+.ad-theme{color:#212529;font-weight:500;}
+.agenda-body{padding:.7rem 1.1rem;display:flex;flex-wrap:wrap;gap:.4rem;}
+.ep{font-size:.78rem;padding:.2rem .65rem;border-radius:2px;}
+.ep-blue{background:#e7f1fb;border:1px solid #b6d4f5;color:#0d5fa0;}
+.ep-orange{background:#fff3e0;border:1px solid #ffe0b2;color:#b84a00;}
+.ep-gray{background:#f1f3f5;border:1px solid #dee2e6;color:#495057;}
+.sp-table{width:100%;border-collapse:collapse;font-size:.87rem;}
+.sp-table th{text-align:left;padding:.4rem .7rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#868e96;border-bottom:2px solid #dee2e6;font-weight:500;}
+.sp-table td{padding:.55rem .7rem;border-bottom:1px solid #f1f3f5;vertical-align:top;}
+.sp-table td:first-child{font-weight:600;color:#212529;}
+.sp-table td:nth-child(2){color:#495057;}
+.sp-table td:last-child{color:#868e96;font-size:.82rem;}
+.phd-table{width:100%;border-collapse:collapse;font-size:.87rem;}
+.phd-table th{text-align:left;padding:.4rem .7rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#868e96;border-bottom:2px solid #dee2e6;font-weight:500;}
+.phd-table td{padding:.55rem .7rem;border-bottom:1px solid #f1f3f5;vertical-align:top;}
+.phd-table td:first-child{font-weight:600;color:#212529;width:160px;}
+.phd-table td:nth-child(2){color:#495057;font-style:italic;}
+.status{display:inline-block;font-size:.7rem;font-weight:600;padding:.15rem .5rem;letter-spacing:.04em;}
+.s-done{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9;}
+.s-prog{background:#fff3e0;color:#b84a00;border:1px solid #ffe0b2;}
+.s-syn{background:#f1f3f5;color:#495057;border:1px solid #dee2e6;}
+.award-row{display:flex;gap:1.2rem;align-items:baseline;padding:.55rem 0;border-bottom:1px solid #f1f3f5;font-size:.9rem;}
+.award-row:last-child{border-bottom:none;}
+.aw-yr{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#868e96;min-width:40px;flex-shrink:0;}
+.aw-body{color:#212529;}
+.aw-body .aw-org{color:#868e96;font-size:.85rem;}
+.gen-table{width:100%;border-collapse:collapse;font-size:.87rem;}
+.gen-table th{text-align:left;padding:.4rem .7rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#868e96;border-bottom:2px solid #dee2e6;font-weight:500;}
+.gen-table td{padding:.55rem .7rem;border-bottom:1px solid #f1f3f5;vertical-align:top;color:#343a40;}
+.gen-table tr:hover td{background:#f8f9fa;}
+.mono{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#495057;}
+.course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.3rem .8rem;}
+.course-grid li{font-size:.88rem;color:#343a40;list-style:disc inside;padding:.18rem 0;}
+.course-grid li::marker{color:#005a9e;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+.cinfo p{font-size:.9rem;color:#343a40;line-height:2;display:flex;align-items:flex-start;gap:.6rem;}
+.cinfo p span.cl{color:#868e96;min-width:70px;font-size:.8rem;}
+.profile-links-list{list-style:none;}
+.profile-links-list li{padding:.45rem 0;border-bottom:1px solid #f1f3f5;display:flex;align-items:center;gap:.7rem;font-size:.88rem;}
+.profile-links-list li:last-child{border-bottom:none;}
+.profile-links-list li .pl-name{font-weight:600;color:#212529;min-width:130px;}
+.profile-links-list li .pl-detail{color:#868e96;font-size:.82rem;}
+.membership-list{list-style:none;}
+.membership-list li{padding:.4rem 0;border-bottom:1px solid #f1f3f5;display:flex;align-items:baseline;gap:.8rem;font-size:.88rem;}
+.membership-list li:last-child{border-bottom:none;}
+.membership-list .ml-org{font-weight:600;color:#212529;}
+.membership-list .ml-id{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#868e96;}
+footer{background:#f8f9fa;border-top:1px solid #dee2e6;padding:1.4rem 2rem;text-align:center;font-size:.8rem;color:#868e96;}
+footer a{color:#005a9e;}
+
+/* ── ALTERNATING SECTION LABEL ── */
+.alt-label-wrap{display:inline-block;overflow:hidden;vertical-align:middle;}
+.alt-label{
+  display:inline-block;
+  transition:opacity .35s ease, transform .35s ease;
+}
+.alt-label.fade-out{opacity:0;transform:translateY(-6px);}
+.alt-label.fade-in{opacity:0;transform:translateY(6px);}
+.alt-label.visible{opacity:1;transform:translateY(0);}
 
 /* ── PROFESSIONAL NETWORK TICKER ── */
 .pro-ticker-wrap{
@@ -116,27 +266,6 @@ a:hover{color:#c7500a;text-decoration:underline;}
 .ti-post-card{display:inline-flex;align-items:center;gap:.5rem;padding:0 1.2rem;height:38px;border-right:1px solid rgba(255,255,255,.12);text-decoration:none;transition:background .15s;cursor:pointer;white-space:nowrap;}
 .ti-post-icon{font-size:.85rem;}
 .ti-post-text{font-size:.75rem;font-weight:600;color:#fff;}
-
-/* MOBILE: make ticker scrollable and keep manager panel hidden unless opened */
-@media (max-width: 768px) {
-  /* Make the ticker scrollable instead of animated on small screens */
-  .pro-ticker-wrap { position: relative; top: auto; height:42px; }
-  .pro-ticker-scroll-clip { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .pro-ticker-track { animation: none !important; display: inline-flex; gap: 0; }
-  .pro-ticker-item { flex: 0 0 auto; padding: 0 .85rem; }
-
-  /* Ensure the manager panel stays off-screen by default */
-  .li-overlay { display: none !important; }
-  .li-panel { transform: translateX(100%); right: 0; left: auto; }
-  .li-panel.open { transform: translateX(0); }
-
-  /* Show the manage button on mobile only for admins (body.owner-mode) */
-  body.owner-mode .li-manage-btn { opacity: 1 !important; pointer-events: auto !important; width: auto !important; }
-}
-
-/* Desktop: show manage button only when body.owner-mode present */
-body.owner-mode .li-manage-btn { opacity: 1 !important; pointer-events: auto !important; }
-
 </style>
 </head>
 <body>
@@ -192,38 +321,6 @@ body.owner-mode .li-manage-btn { opacity: 1 !important; pointer-events: auto !im
     };
     // Append items twice so the CSS animation can loop smoothly
     posts.concat(posts).forEach(p => track.appendChild(createItem(p)));
-
-    // Populate the manager "Current Posts" gallery so visitors see the same list
-    function renderGallery(items){
-      const grid = document.getElementById('liGalleryGrid');
-      const count = document.getElementById('liImgCount');
-      const empty = document.getElementById('liEmptyMsg');
-      if(!grid || !count || !empty) return;
-      grid.innerHTML = '';
-      items.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'li-post-card';
-        card.innerHTML = `
-          <div class="li-post-icon">${p.icon}</div>
-          <div class="li-post-body">
-            <div class="li-post-text">${p.caption}</div>
-            <a class="li-post-url" href="${p.url}" target="_blank" rel="noopener noreferrer">Open post</a>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-      if(items.length){
-        count.textContent = items.length + ' posts';
-        empty.style.display = 'none';
-      } else {
-        count.textContent = '';
-        empty.style.display = 'block';
-      }
-    }
-
-    // Render the gallery using the unique posts (no duplicates)
-    renderGallery(posts);
-
   })();
   </script>
   <button class="li-manage-btn" id="liManageBtn" style="opacity:0;pointer-events:none;width:1px;overflow:hidden;padding:0;border:none;" onclick="liPanelOpen()">✎ Manage</button>
