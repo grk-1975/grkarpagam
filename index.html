@@ -49,7 +49,8 @@ a:hover{color:#c7500a;text-decoration:underline;}
 .chip.c-green{background:#f2fbf4;border-color:#cce8d4;border-top-color:#2e7d32;color:#2e7d32;}
 .chip.c-green .chip-val{color:#2e7d32;}
 @media(max-width:768px){.stat-chips{grid-template-columns:repeat(2,1fr);}}
-/* truncated rest of CSS for brevity in commit but preserved in file */
+/* ... rest of existing CSS preserved ... */
+
 /* ── PROFESSIONAL NETWORK TICKER ── */
 .pro-ticker-wrap{
   background:#0d3b6e;
@@ -115,6 +116,24 @@ a:hover{color:#c7500a;text-decoration:underline;}
 .ti-post-card{display:inline-flex;align-items:center;gap:.5rem;padding:0 1.2rem;height:38px;border-right:1px solid rgba(255,255,255,.12);text-decoration:none;transition:background .15s;cursor:pointer;white-space:nowrap;}
 .ti-post-icon{font-size:.85rem;}
 .ti-post-text{font-size:.75rem;font-weight:600;color:#fff;}
+
+/* MOBILE: make ticker scrollable and keep manager panel hidden unless opened */
+@media (max-width: 768px) {
+  /* Make the ticker scrollable instead of animated on small screens */
+  .pro-ticker-wrap { position: relative; top: auto; height:42px; }
+  .pro-ticker-scroll-clip { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pro-ticker-track { animation: none !important; display: inline-flex; gap: 0; }
+  .pro-ticker-item { flex: 0 0 auto; padding: 0 .85rem; }
+
+  /* Ensure the manager panel stays off-screen by default */
+  .li-overlay { display: none !important; }
+  .li-panel { transform: translateX(100%); right: 0; left: auto; }
+  .li-panel.open { transform: translateX(0); }
+
+  /* Show the manage button on mobile so admin can open the panel */
+  .li-manage-btn { opacity: 1 !important; pointer-events: auto !important; width: auto !important; }
+}
+
 </style>
 </head>
 <body>
@@ -152,10 +171,10 @@ a:hover{color:#c7500a;text-decoration:underline;}
       {url:"https://www.linkedin.com/posts/g-r-karpagam-68ab8353_the-department-of-cse-and-cse-association-activity-7496184821044424704-Vq1w?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"CSE@PSGTECH", icon:"💼"},
       {url:"https://www.linkedin.com/posts/cse-association-psg-tech_psgcollegeoftechnology-psgtech-cse-activity-7494697880008441856-jiuJ?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"First year orientation", icon:"🎓"},
       {url:"https://www.linkedin.com/posts/g-r-karpagam-68ab8353_psgcas-psgias-psginstitutions-activity-7493139212880302080-lyyM?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"Vibe coding", icon:"🎤"},
-      {url:"https://www.linkedin.com_posts/g-r-karpagam-68ab8353_axon26-smarthospital-aiinhealthcare-activity-7464881016235692032-Y4Us?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"AXON 2026", icon:"🚀"},
-      {url:"https://www.linkedin.com_posts/g-r-karpagam-68ab8353_axon26-aiinhealthcare-healthcareai-activity-7464878397903646720-OZBh?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"AXON 2026", icon:"🚀"},
+      {url:"https://www.linkedin.com/posts/g-r-karpagam-68ab8353_axon26-smarthospital-aiinhealthcare-activity-7464881016235692032-Y4Us?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"AXON 2026", icon:"🚀"},
+      {url:"https://www.linkedin.com/posts/g-r-karpagam-68ab8353_axon26-aiinhealthcare-healthcareai-activity-7464878397903646720-OZBh?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"AXON 2026", icon:"🚀"},
       {url:"https://www.linkedin.com/posts/g-r-karpagam-68ab8353_activity-7428992335897833472-xKEb?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"AI Sashakt", icon:"🤖"},
-      {url:"https://www.linkedin.com_posts/g-r-karpagam-68ab8353_reconnected-with-my-alma-mater-psg-college-activity-7419774181845790722-k2g5?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"Alumni contributing back", icon:"🤝"}
+      {url:"https://www.linkedin.com/posts/g-r-karpagam-68ab8353_reconnected-with-my-alma-mater-psg-college-activity-7419774181845790722-k2g5?utm_source=share&utm_medium=member_android&rcm=ACoAAAti1AoBBVMSpuIyjceWDi_Hq2hEdrOc1CY", caption:"Alumni contributing back", icon:"🤝"}
     ];
     const track = document.getElementById('proTickerTrack');
     if(!track) return;
