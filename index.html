@@ -116,6 +116,23 @@ a:hover{color:#c7500a;text-decoration:underline;}
 .ti-post-card{display:inline-flex;align-items:center;gap:.5rem;padding:0 1.2rem;height:38px;border-right:1px solid rgba(255,255,255,.12);text-decoration:none;transition:background .15s;cursor:pointer;white-space:nowrap;}
 .ti-post-icon{font-size:.85rem;}
 .ti-post-text{font-size:.75rem;font-weight:600;color:#fff;}
+
+/* Hide manager UI by default; show only in owner-mode */
+.li-manage-btn{display:none !important;}
+.li-overlay{display:none !important;}
+.li-panel{display:none !important;}
+
+body.owner-mode .li-manage-btn{display:inline-flex !important;opacity:1 !important;pointer-events:auto !important;width:auto !important;}
+body.owner-mode .li-overlay{display:block !important;}
+body.owner-mode .li-panel{display:flex !important;transform:translateX(0) !important;}
+
+/* Mobile-friendly ticker fallback */
+@media (max-width: 768px) {
+  .pro-ticker-wrap { position: relative; top: auto; height: 42px; }
+  .pro-ticker-scroll-clip { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pro-ticker-track { animation: none !important; display: inline-flex; gap: 0; }
+  .pro-ticker-item { flex: 0 0 auto; padding: 0 .85rem; }
+}
 </style>
 </head>
 <body>
@@ -236,6 +253,48 @@ a:hover{color:#c7500a;text-decoration:underline;}
   </div>
   <div class="li-panel-foot">Posts saved in browser · Hover ticker to pause · Click items to open post</div>
 </div>
+
+<script>
+// Owner-mode toggle: show editing UI only when ?owner=1 is present or when owner-mode is set in localStorage
+(function(){
+  function enableOwnerMode(){
+    document.body.classList.add('owner-mode');
+    localStorage.setItem('owner-mode','1');
+  }
+  function disableOwnerMode(){
+    document.body.classList.remove('owner-mode');
+    localStorage.removeItem('owner-mode');
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('owner') === '1'){
+    enableOwnerMode();
+  } else if(localStorage.getItem('owner-mode') === '1'){
+    enableOwnerMode();
+  }
+
+  // Expose small helpers for convenience (use from browser console)
+  window.enableOwnerMode = enableOwnerMode;
+  window.disableOwnerMode = disableOwnerMode;
+
+  // Provide guidance for secure GitHub-based editing (no credentials are collected here)
+  window.requestGitHubEdit = function(){
+    alert('To enable true GitHub-based login/editing we need to register an OAuth app or set up a small server to perform the OAuth flow.\n\nI will NOT ask for or store your GitHub password. If you want, I can implement a secure GitHub OAuth integration — I will need your permission to register an OAuth client (or you can register one and provide the Client ID).');
+  };
+})();
+
+// Minimal ticker/manager behavior helpers (existing functions expected by the UI)
+function liPanelOpen(){
+  document.getElementById('liOverlay').classList.add('open');
+  document.getElementById('liPanel').classList.add('open');
+}
+function liPanelClose(){
+  document.getElementById('liOverlay').classList.remove('open');
+  document.getElementById('liPanel').classList.remove('open');
+}
+
+// Note: liAddPost, liPublish and gallery code are intentionally left as-is from the previous implementation.
+</script>
 
 <div class="page">
 
